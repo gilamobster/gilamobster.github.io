@@ -1,0 +1,142 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+  background-color: #333;
+  color: #fff;
+}
+
+.container {
+  max-width: 800px; /* Adjust as per your requirement */
+  margin: 40px auto 0; /* Added top margin to push the container down */
+  background-color: #222;
+  padding: 20px;
+  border-radius: 10px; /* Rounded corners on all sides */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+h2 {
+  text-align: center;
+  font-style: italic;
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+/* Navigation Bar Styling */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #444;
+  padding: 10px;
+  border-radius: 10px 10px 0 0;
+  margin-bottom: 20px;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+nav li {
+  margin-left: 10px;
+}
+
+nav li a {
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  background-color: #4e8cff;
+  transition: background-color 0.3s ease;
+}
+
+nav li a:hover {
+  background-color: #4e8cff;
+}
+
+.input-container {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #fff;
+}
+
+input[type="number"] {
+  width: 100%;
+  padding: 8px;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+  background-color: #444;
+  color: #fff;
+}
+
+button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border: none;
+  background-color: #4e8cff;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border-radius: 6px;
+}
+
+button:hover {
+  background-color: #3b70db;
+}
+
+.result-container {
+  margin-top: 20px;
+  text-align: center;
+}
+
+#total-estimation {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.result-container p {
+  margin-bottom: 5px;
+}
+
+/* Centering the Buttons on the Page */
+nav {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+/* Styling for h1 container */
+.h1-container {
+  background-color: #222;
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+/* Styling for h2 container */
+.h2-container {
+  background-color: #222;
+  border-radius: 10px;
+  padding: 20px;
+}

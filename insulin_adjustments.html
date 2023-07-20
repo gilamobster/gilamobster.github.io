@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <nav>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="start_insulin.html">Start Insulin</a></li>
+        <li><a href="insulin_adjustments.html">Insulin Adjustments</a></li>
+    </ul>
+</nav>
+<head>
+  <title>Insulin Adjustment</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Insulin Adjustment for Persistent Hyperglycemia</h1>
+    <h2> This website is intended for educational purposes only and should not be used for medical advice or treatment.</h2>
+        
+    <div class="input-container">
+      <label for="insulin-1">total scheduled units (basal + prandial*3):</label>
+      <input type="number" id="insulin-1" step="0.01" min="0">
+
+      <label for="insulin-2">1st correctional dose:</label>
+      <input type="number" id="insulin-2" step="0.01" min="0">
+
+      <label for="insulin-3">2nd correctional dose:</label>
+      <input type="number" id="insulin-3" step="0.01" min="0">
+
+      <label for="insulin-4">3rd correctional dose:</label>
+      <input type="number" id="insulin-4" step="0.01" min="0">
+
+      <label for="insulin-5">4th correctional dose:</label>
+      <input type="number" id="insulin-5" step="0.01" min="0">
+    </div>
+    <button id="estimate-btn">Estimate</button>
+    <div class="result-container">
+      <p id="total-estimation">New Total Daily Dose:</p>
+      <p id="basal-dose">Basal Dose:</p>
+      <p id="prandial-dose">Prandial Dose:</p>
+      <p> You can also consider increasing the correctional resistance scale </p>
+    </div>
+  </div>
+  <script src="insulin_adjustments_script.js"></script>
+</body>
+</html>

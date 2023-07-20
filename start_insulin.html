@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <nav>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="start_insulin.html">Start Insulin</a></li>
+        <li><a href="insulin_adjustments.html">Insulin Adjustments</a></li>
+    </ul>
+</nav>
+<head>
+  <title>Insulin Calculator</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <script src="start_insulin_script.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Insulin Calculator</h1>
+        <h2> This website is intended for educational purposes only and should not be used for medical advice or treatment.</h2>
+        <div class="input-container">
+          <div class="weight-inputs">
+            <label for="weight-inputs">Weight</label>
+            <div class="input-group">
+              <label for="weight-kg">(kg)</label>
+              <input type="number" id="weight-kg" step="0.01" min="0" oninput="convertToLbs()">
+            </div>
+            <div class="input-group">
+              <label for="weight-lbs">(lbs)</label>
+              <input type="number" id="weight-lbs" step="0.01" min="0" oninput="convertToKg()">
+            </div>
+          </div>
+        </div>
+        <div class="risk-container">
+          <label for="risk-factor">Hypoglycemia Risk:</label>
+          <select id="risk-factor">
+            <option value="0.3">High (0.3)</option>
+            <option value="0.4">Moderate (0.4)</option>
+            <option value="0.5">Low (0.5)</option>
+          </select>
+        </div>
+        <button id="calculate-btn">Calculate</button>
+        <div class="result-container">
+          <p id="total-dose"></p>
+          <p id="basal-bolus"></p>
+          <p id="adjustment"></p>
+        </div>
+      </div>
+</body>
+</html>
