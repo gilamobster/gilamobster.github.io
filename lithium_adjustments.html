@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="start_insulin.html">Start Insulin</a></li>
+          <li><a href="insulin_adjustments.html">Insulin Adjustments</a></li>
+          <li><a href="lithium_adjustments.html">Lithium Adjustments</a></li>
+      </ul>
+    </nav>
+  <title>Lithium Dose Calculator</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <h1>Lithium Dose Calculator</h1>
+    <form>
+      <label for="currentDose">Current Total Daily Dose:</label>
+      <input type="number" id="currentDose" step="any"><br><br>
+  
+      <label for="currentLevel">Current Lithium Level:</label>
+      <input type="number" id="currentLevel" step="any"><br><br>
+  
+      <label for="NewLevel">New Lithium Level:</label>
+      <input type="number" id="NewLevel" step="any"><br><br>
+  
+      <label for="newDose">New Dose:</label>
+      <input type="number" id="newDose" step="any"><br><br>
+      
+      <button type="button" onclick="calculateNewLevel()">Calculate New Level (based on new dose)</button>
+      <p>or</p>
+      <button type="button" onclick="calculateNewDose()">Calculate New Dose (based on target new level)</button>
+      
+    </form>
+  
+    <script>
+      function calculateNewDose() {
+        const currentDose = parseFloat(document.getElementById("currentDose").value);
+        const currentLevel = parseFloat(document.getElementById("currentLevel").value);
+        const NewLevel = parseFloat(document.getElementById("NewLevel").value);
+        let newDose;
+  
+        if (!isNaN(currentDose) && !isNaN(currentLevel) && !isNaN(NewLevel)) {
+          newDose = (currentDose / currentLevel) * NewLevel;
+          document.getElementById("newDose").value = newDose.toFixed(2);
+        } else {
+          document.getElementById("newDose").value = "";
+        }
+      }
+  
+      function calculateNewLevel() {
+        const currentDose = parseFloat(document.getElementById("currentDose").value);
+        const currentLevel = parseFloat(document.getElementById("currentLevel").value);
+        const newDose = parseFloat(document.getElementById("newDose").value);
+        let NewLevel;
+  
+        if (!isNaN(currentDose) && !isNaN(currentLevel) && !isNaN(newDose)) {
+          NewLevel = (newDose * currentLevel) / currentDose;
+          document.getElementById("NewLevel").value = NewLevel.toFixed(2);
+        } else {
+          document.getElementById("NewLevel").value = "";
+        }
+      }
+    </script>
+  </body>
+</html>
