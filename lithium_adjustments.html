@@ -16,7 +16,7 @@
     <h1>Lithium Dose Calculator</h1>
     <form>
       <label for="currentDose">Current Total Daily Dose:</label>
-      <input type="number" id="currentDose" step="any"><br><br>
+      <input type="text" id="currentDose" list="doseSuggestions" step="any"><br><br>
   
       <label for="currentLevel">Current Lithium Level:</label>
       <input type="number" id="currentLevel" step="any"><br><br>
@@ -25,7 +25,17 @@
       <input type="number" id="NewLevel" step="any"><br><br>
   
       <label for="newDose">New Dose:</label>
-      <input type="number" id="newDose" step="any"><br><br>
+      <input type="text" id="newDose" list="doseSuggestions" step="any"><br><br>
+
+      <datalist id="doseSuggestions">
+        <option value="300mg">
+        <option value="450mg">
+        <option value="600mg">
+        <option value="750mg">
+        <option value="900mg">
+        <option value="1050mg">
+        <option value="1200mg">
+      </datalist>
       
       <button type="button" onclick="calculateNewLevel()">Calculate New Level (based on new dose)</button>
       <p>or</p>
@@ -34,30 +44,43 @@
     </form>
   
     <script>
+      function parseDose(doseString) {
+        if (typeof doseString === 'string') {
+          // Remove "mg" (case-insensitive) and then parse to float
+          return parseFloat(doseString.replace(/mg/gi, ""));
+        }
+        // If it's not a string (e.g. already a number from direct input), try to parse it directly
+        return parseFloat(doseString);
+      }
+
       function calculateNewDose() {
-        const currentDose = parseFloat(document.getElementById("currentDose").value);
+        const currentDose = parseDose(document.getElementById("currentDose").value);
         const currentLevel = parseFloat(document.getElementById("currentLevel").value);
         const NewLevel = parseFloat(document.getElementById("NewLevel").value);
-        let newDose;
+        let newDoseValue;
   
-        if (!isNaN(currentDose) && !isNaN(currentLevel) && !isNaN(NewLevel)) {
-          newDose = (currentDose / currentLevel) * NewLevel;
-          document.getElementById("newDose").value = newDose.toFixed(2);
+        if (!isNaN(currentDose) && !isNaN(currentLevel) && !isNaN(NewLevel) && currentLevel !== 0) {
+          newDoseValue = (currentDose / currentLevel) * NewLevel;
+          // Lithium doses are typically whole numbers (e.g., 300mg, 450mg, 600mg).
+          document.getElementById("newDose").value = newDoseValue.toFixed(0) + "mg"; 
         } else {
+          // Clear the field or indicate error if inputs are invalid or currentLevel is 0
           document.getElementById("newDose").value = "";
         }
       }
   
       function calculateNewLevel() {
-        const currentDose = parseFloat(document.getElementById("currentDose").value);
+        const currentDose = parseDose(document.getElementById("currentDose").value);
         const currentLevel = parseFloat(document.getElementById("currentLevel").value);
-        const newDose = parseFloat(document.getElementById("newDose").value);
-        let NewLevel;
+        const newDose = parseDose(document.getElementById("newDose").value);
+        let newLevelValue;
   
-        if (!isNaN(currentDose) && !isNaN(currentLevel) && !isNaN(newDose)) {
-          NewLevel = (newDose * currentLevel) / currentDose;
-          document.getElementById("NewLevel").value = NewLevel.toFixed(2);
+        if (!isNaN(currentDose) && !isNaN(currentLevel) && !isNaN(newDose) && currentDose !== 0) {
+          newLevelValue = (newDose * currentLevel) / currentDose;
+          // Lithium levels are usually reported to two decimal places.
+          document.getElementById("NewLevel").value = newLevelValue.toFixed(2); 
         } else {
+          // Clear the field or indicate error if inputs are invalid or currentDose is 0
           document.getElementById("NewLevel").value = "";
         }
       }
